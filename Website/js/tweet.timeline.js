@@ -16,7 +16,7 @@ function eqfeed_callback(data){
 			radius: 25,
 			color: "hsl("+hue+", 100%, 50%)",
 			fillColor: "hsl("+hue+", 100%, 50%)"
-		  }).bindPopup("<table class=\"table table-striped\"><tr><th>User: </th><td>"+data.properties.username+"</td></tr><tr><th>Tweet: </th><td>"+data.properties.text+"</td></tr></table>");
+		  }).bindPopup("<div vocab=\"http://schema.org/\" typeof=\"Product\"><table class=\"table table-striped\"><tbody><tr><div property=\"review\"  typeof=\"Review\"><th><span property=\"author\">User: </span></th><td><span property=\"description\">"+data.properties.username+"</span></td></div></tr><tr><div property=\"review\"  typeof=\"Review\"><th><span property=\"author\">Tweet: </span></th><td><span property=\"description\">"+data.properties.text+"</span></td></div></tr></tbody></table></div>");
 		}
 	  });
 }
