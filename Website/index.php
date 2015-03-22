@@ -310,7 +310,8 @@
 			};
 
 			var overlayMaps = {
-			    "Timeline": timeline
+			    "Timeline": timeline,
+				"Markers": markers
 			};
 
 			L.control.layers(baseMaps, overlayMaps).addTo(map);
