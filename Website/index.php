@@ -52,7 +52,7 @@
 	        </ul>
 
 	        <!-- Tab panes -->
-	        <div class="sidebar-content active">
+	        <div class="sidebar-content active" itemscope itemtype="http://schema.org/Museum">
 	            <div class="sidebar-pane" id="home">
 	                <h1>Tweets</h1>
 	                <p>No tweets found</p>
