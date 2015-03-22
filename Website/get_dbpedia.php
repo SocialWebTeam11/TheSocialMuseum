@@ -1,6 +1,6 @@
 <?php
 
-function create_block($title, $content, $url = false) {
+function create_block($title, $content, $prop = null, $url = false) {
 	if ($url) {
 		$c = "<a href=\"$content\">$content</a>";
 	} else {
@@ -14,7 +14,7 @@ function create_block($title, $content, $url = false) {
 				<div class=\"panel-heading\">
 					<span>$title</span>
 				</div>
-				<div class=\"panel-body\">$c</div>
+				<div class=\"panel-body\" itemprop=\"$prop\">$c</div>
 			</div>
 		</div>
 	</div>";
@@ -64,15 +64,15 @@ $cursor = $dbpedia->find($query);
 		} 
 
 		if (isset($dbpedia_array['label'])) {
-			echo (isset($dbpedia_array['label'])) ? create_block('Name', $dbpedia_array['label']) : '';
+			echo (isset($dbpedia_array['label'])) ? create_block('Name', $dbpedia_array['label'], 'name') : '';
 			echo (isset($dbpedia_array['type'])) ? create_block('Type', $dbpedia_array['type']) : '';
-			echo (isset($dbpedia_array['abstract'])) ? create_block('Description', $dbpedia_array['abstract']) : '';
+			echo (isset($dbpedia_array['abstract'])) ? create_block('Description', $dbpedia_array['abstract'], 'description') : '';
 			echo (isset($dbpedia_array['thema'])) ? create_block('Theme', $dbpedia_array['thema']) : '';
 			echo (isset($dbpedia_array['opgericht'])) ? create_block('Founded', $dbpedia_array['opgericht']) : '';
 			echo (isset($dbpedia_array['directeur'])) ? create_block('Director', $dbpedia_array['directeur']) : '';
-			echo (isset($dbpedia_array['homepage'])) ? create_block('Homepage', $dbpedia_array['homepage'], true) : '';
+			echo (isset($dbpedia_array['homepage'])) ? create_block('Homepage', $dbpedia_array['homepage'], 'url', true) : '';
 			echo (isset($dbpedia_array['status'])) ? create_block('Status', $dbpedia_array['status']) : '';
-			echo (isset($dbpedia_array['wikiPageExternalLink'])) ? create_block('Wikipedia', $dbpedia_array['isPrimaryTopicOf'], true) : '';	
+			echo (isset($dbpedia_array['wikiPageExternalLink'])) ? create_block('Wikipedia', $dbpedia_array['isPrimaryTopicOf'], 'sameAs', true) : '';	
 			echo (isset($dbpedia_array['wikiPageModified'])) ? create_block('Last Modified', $dbpedia_array['wikiPageModified']) : '';
 		}
 		else {
